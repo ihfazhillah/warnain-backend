@@ -7,6 +7,9 @@ class Category(models.Model):
     title = models.CharField(max_length=255)
     thumbnail = models.ImageField(upload_to="categories/")
 
+    class Meta:
+        ordering = ("title",)
+
     def __str__(self):
         return self.title
 
