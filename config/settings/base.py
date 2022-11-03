@@ -44,7 +44,7 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 DATABASES = {
     "default": env.db(
         "DATABASE_URL",
-        default="postgres:///warnain",
+        default="postgres://warnain:warnain@localhost:5432/warnain",
     ),
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
@@ -85,6 +85,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "warnain.users",
+    "warnain.printable_books",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
