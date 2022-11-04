@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import status
-from rest_framework.decorators import action
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import action, api_view
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
@@ -23,3 +24,12 @@ class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericV
     def me(self, request):
         serializer = UserSerializer(request.user, context={"request": request})
         return Response(status=status.HTTP_200_OK, data=serializer.data)
+
+
+@api_view(["POST"])
+def get_token(request):
+    mac = request.data.get("mac")
+    user, created = User.objects.get_or_create(username=mac, defaults={"is_active": True})
+
+    token, created = Token.objects.get_or_create(user=user)
+    return Response({"token": token.key})
