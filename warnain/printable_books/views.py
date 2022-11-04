@@ -2,6 +2,7 @@ import cups
 from django.conf import settings
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView, get_object_or_404
+from rest_framework.request import Request
 from rest_framework.response import Response
 
 from warnain.printable_books.models import Category, PrintableImage
@@ -21,14 +22,17 @@ def category_detail(request, pk):
     return Response(data=data)
 
 
-@api_view(["GET"])
-def print_image(request, pk):
+@api_view(["POST"])
+def print_image(request: Request, pk):
     image = get_object_or_404(PrintableImage, pk=pk)
+
+    copies = request.data.get("copies", "1")
+
     connection = cups.Connection()
     connection.printFile(
         settings.PRINTER_NAME,
         image.image.path,
         f"printing {image.image.path}",
-        {}
+        {"copies": str(copies)}
     )
     return Response({"status": "ok"})
