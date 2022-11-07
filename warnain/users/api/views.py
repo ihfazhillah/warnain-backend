@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-from rest_framework.decorators import action, api_view
+from rest_framework.decorators import action, api_view, authentication_classes, permission_classes
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
@@ -27,8 +28,10 @@ class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericV
 
 
 @api_view(["POST"])
+@permission_classes([])
+@authentication_classes([])
 def get_token(request):
-    mac = request.data.get("mac")
+    mac = request.data.get("mac", "")
     user, created = User.objects.get_or_create(username=mac, defaults={"is_active": True})
 
     token, created = Token.objects.get_or_create(user=user)
