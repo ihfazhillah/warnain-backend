@@ -19,7 +19,7 @@ urlpatterns = [
                   path("",
                        TemplateView.as_view(
                            template_name="pages/home.html",
-                           extra_context={"ip": get_machine_ip(), "port": "8000"}
+                           extra_context={"ip": get_machine_ip(), "port": "9000"}
                        ),
                        name="home"),
                   path(
