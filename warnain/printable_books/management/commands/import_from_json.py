@@ -6,6 +6,8 @@ from django.core.files.uploadedfile import UploadedFile
 from django.core.management.base import BaseCommand
 
 from warnain.printable_books.models import Category, PrintableImage
+import urllib.parse
+
 
 
 class Command(BaseCommand):
@@ -27,19 +29,21 @@ class Command(BaseCommand):
                 title = cat["category"].replace("Coloring Pages", "").strip()
                 self.stdout.write(f"processing {title}")
 
-                images_dict = {
-                    item["url"]: item
-                    for item in cat["images"]
-                }
+                index = random.randint(0, len(cat["images"]) - 1)
 
-                thumbnail = random.choice(cat["image_urls"])
+                thumbnail = cat["images"][index]
 
-                with open(os.path.join(image_base_path, images_dict[thumbnail]["path"]), "rb") as thumbnail_f:
+                with open(os.path.join(image_base_path, thumbnail["path"]), "rb") as thumbnail_f:
                     category = Category.objects.create(
                         title=title,
                         thumbnail=UploadedFile(thumbnail_f),
                         source=source,
                     )
+
+                images_dict = {
+                    item["url"]: item
+                    for item in cat["images"]
+                }
 
                 for key, image in images_dict.items():
                     with open(os.path.join(image_base_path, image["path"]), "rb") as image_f:

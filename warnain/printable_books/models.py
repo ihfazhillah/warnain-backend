@@ -6,7 +6,7 @@ from model_utils.models import TimeStampedModel
 class Category(models.Model):
     title = models.CharField(max_length=255)
     thumbnail = models.ImageField(upload_to="categories/")
-    soruce = models.URLField(default="https://iheartcraftythings.com")
+    source = models.URLField(default="https://iheartcraftythings.com")
 
     class Meta:
         ordering = ("title",)
