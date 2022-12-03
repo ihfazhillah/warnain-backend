@@ -14,10 +14,12 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('json_file')
         parser.add_argument('image_base_path')
+        parser.add_argument('source')
 
     def handle(self, *args, **options):
         json_file = options.get("json_file")
         image_base_path = options.get("image_base_path")
+        source = options.get("source", "https://warnain.ksatriamuslim.com")
 
         with open(json_file) as json_f:
             data_list = json.load(json_f)
@@ -35,7 +37,8 @@ class Command(BaseCommand):
                 with open(os.path.join(image_base_path, images_dict[thumbnail]["path"]), "rb") as thumbnail_f:
                     category = Category.objects.create(
                         title=title,
-                        thumbnail=UploadedFile(thumbnail_f)
+                        thumbnail=UploadedFile(thumbnail_f),
+                        source=source,
                     )
 
                 for key, image in images_dict.items():
