@@ -29,11 +29,11 @@ class CategoryListView(ListAPIView):
         order_by = "-id"
 
         if sort == "title":
-            order_by = "title"
+            order_by = models.F("title").asc()
         elif sort == "freq":
-            order_by = "-access_count"
+            order_by = models.F("access_count").desc(nulls_last=True)
         elif sort == "access":
-            order_by = "-latest_access"
+            order_by = models.F("latest_access").desc(nulls_last=True)
 
         return qs.order_by(order_by)
 
