@@ -2,7 +2,7 @@
 
 All notable changes to the Warnain Print Management System will be documented in this file.
 
-## [Unreleased] - 2025-01-06
+## [2.0.0] - 2025-01-06
 
 ### Added
 - **Full-page image gallery** in CategoryDetailScreen with swipeable navigation
@@ -34,9 +34,20 @@ All notable changes to the Warnain Print Management System will be documented in
 - **Swipe instruction**: Repositioned to top of screen for better visibility
 - **Layout responsiveness**: Proper spacing and positioning across different screen sizes
 
+### Backend Enhancements
+- **Django API**: Complete REST API for categories, books, and print jobs
+- **CORS Configuration**: Cross-origin resource sharing for mobile app
+- **CSRF Middleware**: Custom middleware for API access without tokens
+- **Database Models**: New models for PrintJob, NetworkInterface, PrinterSettings
+- **Admin Interface**: Enhanced Django admin for mobile app management
+- **Utility Functions**: Network detection and printer configuration helpers
+- **Management Commands**: Automated printer setup and initialization
+
 ### Technical
 - **PagerView integration**: Smooth horizontal scrolling between book images
 - **Overlay implementation**: Absolute positioning with z-index management
 - **Shadow effects**: Cross-platform shadow implementation for depth
 - **State management**: Proper page tracking and navigation state
-- **Performance**: Optimized rendering for large image galleries 
+- **Performance**: Optimized rendering for large image galleries
+- **API Integration**: Complete Django REST framework implementation
+- **Database Migrations**: New models for mobile app functionality 
