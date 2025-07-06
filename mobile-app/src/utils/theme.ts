@@ -1,0 +1,76 @@
+import { DefaultTheme } from "react-native-paper";
+
+export const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "#6750a4",
+    onPrimary: "#ffffff",
+    primaryContainer: "#eaddff",
+    onPrimaryContainer: "#21005d",
+    secondary: "#625b71",
+    onSecondary: "#ffffff",
+    secondaryContainer: "#e8def8",
+    onSecondaryContainer: "#1d192b",
+    tertiary: "#7d5260",
+    onTertiary: "#ffffff",
+    tertiaryContainer: "#ffd8e4",
+    onTertiaryContainer: "#31111d",
+    error: "#ba1a1a",
+    onError: "#ffffff",
+    errorContainer: "#ffdad6",
+    onErrorContainer: "#410002",
+    background: "#fffbfe",
+    onBackground: "#1c1b1f",
+    surface: "#fffbfe",
+    onSurface: "#1c1b1f",
+    surfaceVariant: "#e7e0ec",
+    onSurfaceVariant: "#49454f",
+    outline: "#79747e",
+    outlineVariant: "#cab4d0",
+    shadow: "#000000",
+    scrim: "#000000",
+    inverseSurface: "#313033",
+    inverseOnSurface: "#f4eff4",
+    inversePrimary: "#d0bcff",
+    elevation: {
+      level0: "transparent",
+      level1: "#f7f2fa",
+      level2: "#f1ecf4",
+      level3: "#ebe6ee",
+      level4: "#e9e4ed",
+      level5: "#e6e1ea",
+    },
+  },
+  fonts: {
+    ...DefaultTheme.fonts,
+    regular: {
+      fontFamily: "System",
+      fontWeight: "400" as const,
+    },
+    medium: {
+      fontFamily: "System",
+      fontWeight: "500" as const,
+    },
+    bold: {
+      fontFamily: "System",
+      fontWeight: "700" as const,
+    },
+  },
+  spacing: {
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    xl: 32,
+    xxl: 40,
+  },
+  borderRadius: {
+    small: 4,
+    medium: 8,
+    large: 16,
+    extra: 24,
+  },
+};
+
+export type AppTheme = typeof theme;
