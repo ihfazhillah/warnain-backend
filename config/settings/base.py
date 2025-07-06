@@ -313,5 +313,5 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
-PRINTER_NAME = "Canon-iP2700"
+PRINTER_NAME = "Ink-Tank-310-series"
 INTERFACE = "enp37s0"
