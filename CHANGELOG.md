@@ -2,7 +2,7 @@
 
 All notable changes to the Warnain Print Management System will be documented in this file.
 
-## [2.0.0] - 2025-01-06
+## [2.0.0] - 2025-07-06
 
 ### Added
 - **Full-page image gallery** in CategoryDetailScreen with swipeable navigation
